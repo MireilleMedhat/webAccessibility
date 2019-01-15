@@ -5,7 +5,7 @@
  *   Simple accordion pattern example
  */
 
-"use strict";
+// "use strict";
 
 Array.prototype.slice
   .call(document.querySelectorAll(".Accordion"))
@@ -30,7 +30,7 @@ Array.prototype.slice
 
       if (target.classList.contains("Accordion-trigger")) {
         // Check if the current toggle is expanded.
-        var isExpanded = target.getAttribute("aria-expanded") == "true";
+        var isExpanded = target.getAttribute("aria-expanded") === "true";
         var active = accordion.querySelector('[aria-expanded="true"]');
 
         // without allowMultiple, close the open accordion
@@ -103,6 +103,8 @@ Array.prototype.slice
             // Go to last accordion
             case "35":
               triggers[triggers.length - 1].focus();
+              break;
+            default:
               break;
           }
 

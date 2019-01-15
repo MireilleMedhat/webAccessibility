@@ -5,44 +5,10 @@ import Accordion from "./components/Accordion/Accordion";
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <form>
-          <h1>Accordion Demo</h1>
-          <Accordion>
-            <div label="Alligator Mississippiensis">
-              <p>
-                <strong>Common Name:</strong> American Alligator
-              </p>
-              <p>
-                <strong>Distribution:</strong> Texas to North Carolina, US
-              </p>
-              <p>
-                <strong>Endangered Status:</strong> Currently Not Endangered
-              </p>
-            </div>
-            <div label="Alligator Sinensis">
-              <p>
-                <strong>Common Name:</strong> Chinese Alligator
-              </p>
-              <p>
-                <strong>Distribution:</strong> Eastern China
-              </p>
-              <p>
-                <strong>Endangered Status:</strong> Critically Endangered
-              </p>
-            </div>
-            <div label="Third Acc">
-              <p>
-                <strong>Common Name:</strong> Chinese Alligator
-              </p>
-              <p>
-                <strong>Distribution:</strong> Eastern China
-              </p>
-              <p>
-                <strong>Endangered Status:</strong> Critically Endangered
-              </p>
-            </div>
-          </Accordion>
+      <div>
+        <main>
+          <h1>Accordion Example</h1>
+          <Accordion />
 
           <h1>Original Project Code</h1>
           <header className="App-header">
@@ -59,8 +25,7 @@ class App extends Component {
               Learn React
             </a>
           </header>
-        </form>
-        <script src="js/accordion.js" />
+        </main>
       </div>
     );
   }
