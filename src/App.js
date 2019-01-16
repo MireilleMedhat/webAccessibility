@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Accordion from "./components/Accordion/Accordion";
-import Alert from "./components/AlertCOMP/Alert";
+import Alert from "./components/Alert/Alert";
 class App extends Component {
   render() {
     return (
       <div>
         <main>
           <h1>Accordion Example</h1>
-          <Accordion />
           <Alert />
           <h1>Original Project Code</h1>
           <header className="App-header">
