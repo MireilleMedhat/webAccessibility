@@ -1,6 +1,6 @@
 import React from "react";
 import "./testFormStyle.css";
-import Accordion from "./components/Accordion/Accordion";
+import Accordion from "../components/Accordion/Accordion";
 
 const TestForm = () => {
   return (
@@ -88,9 +88,9 @@ const TestForm = () => {
           </label>
         </div>
 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="terms" />
-          <label class="form-check-label" for="terms">
+        <div className="form-check">
+          <input className="form-check-input" type="checkbox" id="terms" />
+          <label className="form-check-label" htmlFor="terms">
             Accept terms and conditions
           </label>
         </div>
