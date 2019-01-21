@@ -4,28 +4,29 @@ import "./handleAccordion";
 
 class AccordionComponent extends Component {
   state = {
-    accordion: document.querySelector(".Accordion")
+    accordion: null
   };
+  componentDidMount() {
+    this.setState({ accordion: document.querySelector(".Accordion") });
+  }
   // tiggers = headers
   // panels = bodies
   handleKeyDown = event => {
     // Bind keyboard behaviors on the main accordion container
-    const target = event.target; //document.querySelector(".Accordion");
-    const accordion = document.querySelector(".Accordion");
-    var triggers = Array.prototype.slice.call(
-      accordion.querySelectorAll(".Accordion-trigger")
-    );
-
+    const target = event.target;
     var key = event.which.toString();
     // 33 = Page Up, 34 = Page Down
     var ctrlModifier = true && key.match(/33|34/);
+
+    var triggers = Array.prototype.slice.call(
+      this.state.accordion.querySelectorAll(".Accordion-trigger")
+    );
 
     var panels = Array.prototype.slice.call(
       target.querySelectorAll(".Accordion-panel")
     );
 
     // Is this coming from an accordion header?
-    // if (target.classList.contains("Accordion-trigger")) {
     // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
     // 38 = Up, 40 = Down
     if (key.match(/38|40/) || ctrlModifier) {
@@ -52,9 +53,7 @@ class AccordionComponent extends Component {
       }
 
       event.preventDefault();
-    }
-    //}
-    else if (ctrlModifier) {
+    } else if (ctrlModifier) {
       // Control + Page Up/ Page Down keyboard operations
       // Catches events that happen inside of panels
       panels.forEach(function(panel, index) {
@@ -68,17 +67,18 @@ class AccordionComponent extends Component {
   };
   handleClick = event => {
     var target = event.target;
-    var accordion = document.querySelector(".Accordion"); //
-    var allowMultiple = accordion.hasAttribute("data-allow-multiple");
+    var allowMultiple = this.state.accordion.hasAttribute(
+      "data-allow-multiple"
+    );
     // Allow for each toggle to both open and close individually
     var allowToggle = allowMultiple
       ? allowMultiple
-      : accordion.hasAttribute("data-allow-toggle");
+      : this.state.accordion.hasAttribute("data-allow-toggle");
 
     if (target.classList.contains("Accordion-trigger")) {
       // Check if the current toggle is expanded.
       var isExpanded = target.getAttribute("aria-expanded") === "true";
-      var active = accordion.querySelector('[aria-expanded="true"]');
+      var active = this.state.accordion.querySelector('[aria-expanded="true"]');
 
       // without allowMultiple, close the open accordion
       if (!allowMultiple && active && active !== target) {
@@ -117,7 +117,9 @@ class AccordionComponent extends Component {
       }
       if (!allowToggle) {
         // Get the first expanded/ active accordion
-        var expanded = accordion.querySelector('[aria-expanded="true"]');
+        var expanded = this.state.accordion.querySelector(
+          '[aria-expanded="true"]'
+        );
 
         // If an expanded/ active accordion is found, disable
         if (expanded) {
