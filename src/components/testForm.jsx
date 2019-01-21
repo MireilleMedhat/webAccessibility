@@ -1,6 +1,6 @@
 import React from "react";
 import RadioGroup from "./radioGroup/radiogroup";
-import Accordion from "../components/Accordion/Accordion";
+import Accordion from "./Accordion/Accordion";
 import "./testFormStyle.css";
 import "../components/button/buttonStyle.css";
 const TestForm = () => {
