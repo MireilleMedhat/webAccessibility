@@ -1,5 +1,6 @@
 import React from "react";
 import RadioGroup from "./radiogroup";
+import Accordion from "../components/Accordion/Accordion";
 import "./testFormStyle.css";
 import "./buttonStyle.css";
 const TestForm = () => {
@@ -73,6 +74,8 @@ const TestForm = () => {
             </select>
           </div>
           <RadioGroup />
+          <h1>Accordion Example</h1>
+          <Accordion />
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="terms" />
             <label className="form-check-label" htmlFor="terms">
