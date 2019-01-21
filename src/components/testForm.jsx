@@ -2,8 +2,12 @@ import React from "react";
 import RadioGroup from "./radiogroup";
 import Accordion from "../components/Accordion/Accordion";
 import "./testFormStyle.css";
-import Alert from "./components/Alert/Alert";
+import Alert from "./Alert/Alert";
 import "./buttonStyle.css";
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
 const TestForm = () => {
   function actionButtonEventHandler(event) {
     var type = event.type;
