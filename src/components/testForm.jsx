@@ -18,75 +18,77 @@ const TestForm = () => {
   }
 
   return (
-    <div>
-      <div role="form" aria-labelledby="testform">
-        <h1>Test Form to test Accessibility</h1>
-        <div className="form-group">
-          <label htmlFor="firstname">First Name</label>
-          <input
-            id="firstname"
-            type="text"
-            className="form-control"
-            aria-label="first name"
-            aria-required="true"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="middlename">Middle Name</label>
-          <input
-            id="middlename"
-            type="text"
-            className="form-control"
-            aria-label="middle name"
-            aria-required="true"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="lastname">Last Name</label>
-          <input
-            id="lastname"
-            type="text"
-            className="form-control"
-            aria-label="last name"
-            aria-required="true"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="surname">SurName</label>
-          <input
-            id="surname"
-            type="text"
-            className="form-control"
-            aria-label="surname"
-            aria-required="true"
-          />
-        </div>
-        <div className="form-group">
-          <select className="form-control">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-            <option>Option 5</option>
-            <option>Option 6</option>
-          </select>
-        </div>
-        <RadioGroup />
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="terms" />
-          <label className="form-check-label" htmlFor="terms">
-            Accept terms and conditions
-          </label>
-        </div>
-        <br />
-        <div
-          tabIndex="0"
-          role="button"
-          id="action"
-          onClick={actionButtonEventHandler}
-          onKeyDown={actionButtonEventHandler}
-        >
-          Submit
+    <React.Fragment>
+      <div aria-labelledby="testform">
+        <div role="form" id="testform" aria-label="testform">
+          <h1>Test Form to test Accessibility</h1>
+          <div className="form-group">
+            <label htmlFor="firstname">First Name</label>
+            <input
+              id="firstname"
+              type="text"
+              className="form-control"
+              aria-label="first name"
+              aria-required="true"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="middlename">Middle Name</label>
+            <input
+              id="middlename"
+              type="text"
+              className="form-control"
+              aria-label="middle name"
+              aria-required="true"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastname">Last Name</label>
+            <input
+              id="lastname"
+              type="text"
+              className="form-control"
+              aria-label="last name"
+              aria-required="true"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="surname">SurName</label>
+            <input
+              id="surname"
+              type="text"
+              className="form-control"
+              aria-label="surname"
+              aria-required="true"
+            />
+          </div>
+          <div className="form-group">
+            <select className="form-control">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+              <option>Option 5</option>
+              <option>Option 6</option>
+            </select>
+          </div>
+          <RadioGroup />
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" id="terms" />
+            <label className="form-check-label" htmlFor="terms">
+              Accept terms and conditions
+            </label>
+          </div>
+          <br />
+          <div
+            tabIndex="0"
+            role="button"
+            id="action"
+            onClick={actionButtonEventHandler}
+            onKeyDown={actionButtonEventHandler}
+          >
+            Submit
+          </div>
         </div>
       </div>
       <br />
@@ -106,7 +108,7 @@ const TestForm = () => {
       <transcript id="theText">
         This is the english language transcript for the video...
       </transcript>
-    </div>
+    </React.Fragment>
   );
 };
 
