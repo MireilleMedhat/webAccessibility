@@ -99,12 +99,13 @@ export default class DropDown extends React.Component {
 
     console.log(this.state); //////////////
     return (
-      <div className="listbox-area">
+     /// <div className="listbox-area">
         <div className="left-area">
           <span id="exp_elem">Choose an element:</span>
 
           <div id="exp_wrapper">
-            <button
+            <button 
+              className="form-control"
               aria-haspopup="listbox"
               aria-labelledby="exp_elem exp_button"
               id="exp_button"
@@ -114,12 +115,13 @@ export default class DropDown extends React.Component {
               {this.options[this.state.selectedOptionIndex]}
             </button>
             <ul
+            
               id="exp_elem_list"
               role="listbox"
               tabIndex={-1}
               aria-labelledby="exp_elem"
-              className={this.state.dispalyList ? "" : "hidden"}
-              //aria-activedescendant={this.state.selectedOptionId}
+              className={`${this.state.dispalyList ? "" : "hidden"} from-control`}
+              aria-activedescendant={this.state.selectedOptionId} //TODO: check if it is set automatically
               onKeyDown={this.selectedItemChangedHandler}
               ref ={this.list}
             >
@@ -127,7 +129,7 @@ export default class DropDown extends React.Component {
             </ul>
           </div>
         </div>
-      </div>
+     /// </div>
     );
   }
 }

@@ -16,7 +16,7 @@
 	display: inline-block;
 	font-size: 14px;
 	vertical-align: top;
-	width: 50%;
+	width: 100%;
 }
 
 .left-area {
@@ -28,7 +28,8 @@
 }
 
 [role="listbox"] {
-	min-height: 18em;
+	/*min-height: 18em;*/
+	z-index: 1;
 	padding: 0px;
 	background: white;
 	border: 1px solid #aaa;

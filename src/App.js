@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import DropDown from './components/DropDown'
-import './App.css';
+import React, { Component } from "react";
+import TestForm from "./components/testForm";
+import "./App.css";
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <DropDown></DropDown>
-      </div>
+      <main className="container">
+        <TestForm />
+      </main>
     );
   }
 }
