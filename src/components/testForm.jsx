@@ -1,8 +1,8 @@
 import React from "react";
-import RadioGroup from "./radiogroup";
+import RadioGroup from "./radioGroup/radiogroup";
 import Accordion from "../components/Accordion/Accordion";
 import "./testFormStyle.css";
-import "./buttonStyle.css";
+import "../components/button/buttonStyle.css";
 const TestForm = () => {
   function actionButtonEventHandler(event) {
     var type = event.type;
