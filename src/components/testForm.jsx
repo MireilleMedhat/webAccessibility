@@ -2,6 +2,7 @@ import React from "react";
 import RadioGroup from "./radiogroup";
 import Accordion from "../components/Accordion/Accordion";
 import "./testFormStyle.css";
+import Alert from "./components/Alert/Alert";
 import "./buttonStyle.css";
 const TestForm = () => {
   function actionButtonEventHandler(event) {
@@ -21,6 +22,8 @@ const TestForm = () => {
   return (
     <React.Fragment>
       <div aria-labelledby="testform">
+        <h1>Accordion Example</h1>
+        <Alert />
         <div role="form" id="testform" aria-label="testform">
           <h1>Test Form to test Accessibility</h1>
           <div className="form-group">
