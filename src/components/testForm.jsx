@@ -1,4 +1,5 @@
 import React from "react";
+import RadioGroup from "./radiogroup";
 import "./testFormStyle.css";
 import "./buttonStyle.css";
 const TestForm = () => {
@@ -70,46 +71,23 @@ const TestForm = () => {
             <option>Option 6</option>
           </select>
         </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="gender"
-            id="male"
-            value="male"
-          />
-          <label className="form-check-label" htmlFor="inlineRadio1">
-            Male
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="gender"
-            id="male"
-            value="female"
-          />
-          <label className="form-check-label" htmlFor="inlineRadio1">
-            Female
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="terms" />
-          <label class="form-check-label" for="terms">
+        <RadioGroup />
+        <div className="form-check">
+          <input className="form-check-input" type="checkbox" id="terms" />
+          <label className="form-check-label" htmlFor="terms">
             Accept terms and conditions
           </label>
         </div>
         <br />
         <div
-          tabindex="0"
+          tabIndex="0"
           role="button"
           id="action"
           onClick={actionButtonEventHandler}
           onKeyDown={actionButtonEventHandler}
         >
           Submit
-        </div>{" "}
+        </div>
       </div>
       <br />
       <img
