@@ -1,8 +1,13 @@
 import React from "react";
-import RadioGroup from "./radioGroup/radiogroup";
 import Accordion from "./Accordion/Accordion";
+import Alert from "./Alert/Alert";
+import RadioGroup from "./radioGroup/radiogroup";
 import "./testFormStyle.css";
-import "../components/button/buttonStyle.css";
+import "./button/buttonStyle.css";
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
 const TestForm = () => {
   function actionButtonEventHandler(event) {
     var type = event.type;
@@ -74,8 +79,7 @@ const TestForm = () => {
             </select>
           </div>
           <RadioGroup />
-          <h1>Accordion Example</h1>
-          <Accordion />
+          <h3>Accordion Example</h3>
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="terms" />
             <label className="form-check-label" htmlFor="terms">
@@ -83,6 +87,9 @@ const TestForm = () => {
             </label>
           </div>
           <br />
+          <Accordion />
+          <h3>Alert Example</h3>
+          <Alert />
           <div
             tabIndex="0"
             role="button"
