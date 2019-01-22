@@ -134,13 +134,8 @@ class AccordionComponent extends Component {
         <title>Accordion Example | WAI-ARIA Authoring Practices 1.1</title>
 
         <main>
-          <section>
-            <div
-              role="separator"
-              id="ex_start_sep"
-              aria-labelledby="ex_start_sep ex_label"
-              aria-label="Start of"
-            />
+          <section aria-labelledby="ex_start_sep">
+            <div role="separator" id="ex_start_sep" aria-label="Start of" />
             {/*The <dd> tag is used to describe a term/name in a description list.
                 The <dd> tag is used in conjunction with <dl> (defines a description list) and <dt> (defines terms/names).
                 Inside a <dd> tag you can put paragraphs, line breaks, images, links, lists, etc. 
@@ -349,7 +344,7 @@ class AccordionComponent extends Component {
             <div
               role="separator"
               id="ex_end_sep"
-              aria-labelledby="ex_end_sep ex_label"
+              aria-labelledby="ex_end_sep"
               aria-label="End of"
             />
           </section>
