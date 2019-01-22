@@ -3,6 +3,7 @@ import Accordion from "./Accordion/Accordion";
 import Alert from "./Alert/Alert";
 import RadioGroup from "./radioGroup/radiogroup";
 import Button from "./button/button";
+import CheckBox from "./checkBox/CheckBox";
 import "./testFormStyle.css";
 import "./button/buttonStyle.css";
 /*
@@ -10,6 +11,11 @@ import "./button/buttonStyle.css";
  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  */
 const TestForm = () => {
+  const data = [
+    { Ename: "Lettuce", tabIndex: "0", id: "0" },
+    { Ename: "Tomato", tabIndex: "0", id: "1" },
+    { Ename: "Mustard", tabIndex: "0", id: "2" }
+  ];
   return (
     <React.Fragment>
       <div aria-labelledby="testform">
@@ -66,8 +72,11 @@ const TestForm = () => {
             </select>
           </div>
           <RadioGroup />
-          <h3>Accordion Example</h3>
+
           <br />
+          <CheckBox data={data} />
+          <br />
+          <h3>Accordion Example</h3>
           <Accordion />
           <h3>Alert Example</h3>
           <Alert />
