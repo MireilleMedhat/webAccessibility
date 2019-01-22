@@ -17,7 +17,16 @@ const TestForm = () => {
       alert("The button is working :D");
     }
   }
-
+  const  options = [
+    "Neptunium",
+    "Plutonium",
+    "Curium",
+    "Americium",
+    "Berkelium",
+    "Californium",
+    "Einsteinium",
+    "Fermium"
+  ];
   return (
     <div>
       <div role="form" aria-labelledby="testform">
@@ -71,7 +80,7 @@ const TestForm = () => {
             <option>Option 5</option>
             <option>Option 6</option>
           </select> */}
-          <DropDown className="form-control" />
+          <DropDown className="form-control" options={options} />
         </div>
         <RadioGroup />
         <div className="form-check">

@@ -2,84 +2,95 @@ import React from "react";
 import "./index.css";
 export default class DropDown extends React.Component {
   state = {
-    //selectedOption: {
     selectedOptionIndex: 0,
-    selectedOptionId: "",
-    //selectedOptionText: "",
-    // },
-    dispalyList: false,
+    dispalyList: false
   };
-  //list of options that will be passed through props
-  options = [
-    "Neptunium",
-    "Plutonium",
-    "Curium",
-    "Americium",
-    "Berkelium",
-    "Californium",
-    "Einsteinium",
-    "Fermium"
-  ];
 
-  list=React.createRef();
+  listRef = React.createRef();
 
- componentDidUpdate()
- {
-   if(this.state.dispalyList){
-    this.list.current.focus();
-   }
- }
+  componentDidUpdate() {
+    if (this.state.dispalyList) {
+      this.listRef.current.focus();
+      this.updateScrollBar();
+    }
+  }
 
   buttonClickedHandler = () => {
     this.setState(state => {
       return { dispalyList: !state.dispalyList };
     });
-
   };
 
-  itemClickedHandler =(id,index) =>{
-    this.setState(state => {return{selectedOptionId:id , selectedOptionIndex:index ,dispalyList: !state.dispalyList}});
-    //this.list.current.aria-activedescendant // = this.state.selectedOptionId;
+  itemClickedHandler = index => {
+    this.setState(state => {
+      return {
+        selectedOptionIndex: index,
+        dispalyList: !state.dispalyList
+      };
+    });
+  };
+  updateScrollBar() {
+    const element = this.listRef.current.children[
+      this.state.selectedOptionIndex
+    ];
+    if (this.listRef.current.scrollHeight > this.listRef.current.clientHeight) {
+      const scrollBottom =
+        this.listRef.current.clientHeight + this.listRef.current.scrollTop;
+      const elementBottom = element.offsetTop + element.offsetHeight;
+      if (elementBottom > scrollBottom) {
+        this.listRef.current.scrollTop =
+          elementBottom - this.listRef.current.clientHeight;
+      } else if (element.offsetTop < this.listRef.current.scrollTop) {
+        this.listRef.current.scrollTop = element.offsetTop;
+      }
+    }
   }
-  
   selectedItemChangedHandler = event => {
-    console.log(event.key);
-    let key = event.key;
-    let index = this.state.selectedOptionIndex;
-    let id = `exp_elem_${this.options[index].substr(0, 2)}`;
-    const len = this.options.length-1;
+    event.preventDefault();
+    const key = event.key;
+    const index = this.state.selectedOptionIndex;
+    const lastItemIndex = this.props.options.length - 1;
+    const firstItemIndex = 0;
     switch (key) {
       case "ArrowUp":
-        if (index > 0) this.setState({ selectedOptionIndex: --index });
+        if (index > 0) {
+          this.setState({ selectedOptionIndex: index - 1 });
+        }
         break;
 
       case "ArrowDown":
-        if ( index < this.options.length-1) 
-        this.setState({ selectedOptionIndex: ++index });
+        if (index < this.props.options.length - 1) {
+          this.setState({ selectedOptionIndex: index + 1 });
+        }
         break;
       case "Enter":
-      case " ":
-      this.itemClickedHandler(id,index);
-      break;
+        this.itemClickedHandler(index);
+        break;
       case "Home":
-      this.setState({ selectedOptionIndex: 0 })
-      break;
+        this.setState({ selectedOptionIndex: firstItemIndex });
+        break;
       case "End":
-      this.setState({ selectedOptionIndex: len })
-      break;
+        this.setState({ selectedOptionIndex: lastItemIndex });
+        break;
+
+      case "Escape":
+        this.setState({ dispalyList: false });
+        break;
       default:
         break;
     }
   };
+
+  itemHoverHandler(index) {
+    this.setState({ selectedOptionIndex: index });
+  }
   render() {
-    ///////////////
     if (this.state.dispalyList === false) {
     }
-    const listItems = this.options.map((value, index) => {
+    const listItems = this.props.options.map((value, index) => {
       let id = `exp_elem_${value.substr(0, 2)}`;
       let focusedClass = "";
       if (index === this.state.selectedOptionIndex) {
-        console.log(this.state.selectedOptionIndex);
         focusedClass = " focused";
       }
 
@@ -88,48 +99,49 @@ export default class DropDown extends React.Component {
           key={id}
           id={id}
           role="option"
+          onMouseOver={() => this.itemHoverHandler(index)}
           aria-selected={focusedClass ? "true" : "false"}
-          className={focusedClass}
-          onClick ={()=>this.itemClickedHandler(id,index)}
+          className={`${focusedClass} `}
+          onClick={() => this.itemClickedHandler(index)}
         >
           {value}
         </li>
       );
     });
-
-    console.log(this.state); //////////////
+    const selectedOptionId = `exp_elem_${this.props.options[
+      this.state.selectedOptionIndex
+    ].substr(0, 2)}`;
     return (
-     /// <div className="listbox-area">
-        <div className="left-area">
-          <span id="exp_elem">Choose an element:</span>
+      <>
+        <span id="exp_elem">Choose an element:</span>
 
-          <div id="exp_wrapper">
-            <button 
-              className="form-control"
-              aria-haspopup="listbox"
-              aria-labelledby="exp_elem exp_button"
-              id="exp_button"
-              aria-expanded={this.state.dispalyList}
-              onClick={this.buttonClickedHandler}
-            >
-              {this.options[this.state.selectedOptionIndex]}
-            </button>
+        <div id="exp_wrapper">
+          <button
+            className="form-control"
+            aria-haspopup="listbox"
+            aria-labelledby="exp_elem exp_button"
+            id="exp_button"
+            aria-expanded={this.state.dispalyList}
+            onClick={this.buttonClickedHandler}
+          >
+            {this.props.options[this.state.selectedOptionIndex]}
+          </button>
+          {this.state.dispalyList && (
             <ul
-            
               id="exp_elem_list"
               role="listbox"
               tabIndex={-1}
               aria-labelledby="exp_elem"
-              className={`${this.state.dispalyList ? "" : "hidden"} from-control`}
-              aria-activedescendant={this.state.selectedOptionId} //TODO: check if it is set automatically
+              className={`from-control`}
+              aria-activedescendant={selectedOptionId}
               onKeyDown={this.selectedItemChangedHandler}
-              ref ={this.list}
+              ref={this.listRef}
             >
               {listItems}
             </ul>
-          </div>
+          )}
         </div>
-     /// </div>
+      </>
     );
   }
 }
