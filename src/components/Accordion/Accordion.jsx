@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Accordion.css";
-import "./handleAccordion";
 
 class AccordionComponent extends Component {
   state = {
