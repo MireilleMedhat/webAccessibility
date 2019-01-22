@@ -2,6 +2,7 @@ import React from "react";
 import Accordion from "./Accordion/Accordion";
 import Alert from "./Alert/Alert";
 import RadioGroup from "./radioGroup/radiogroup";
+import Button from "./button/button";
 import "./testFormStyle.css";
 import "./button/buttonStyle.css";
 /*
@@ -9,20 +10,6 @@ import "./button/buttonStyle.css";
  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  */
 const TestForm = () => {
-  function actionButtonEventHandler(event) {
-    var type = event.type;
-    // Grab the keydown and click events
-    if (type === "keydown") {
-      // If either enter or space is pressed, execute the funtion
-      if (event.keyCode === 13 || event.keyCode === 32) {
-        alert("The button is working :D");
-        event.preventDefault();
-      }
-    } else if (type === "click") {
-      alert("The button is working :D");
-    }
-  }
-
   return (
     <React.Fragment>
       <div aria-labelledby="testform">
@@ -80,25 +67,11 @@ const TestForm = () => {
           </div>
           <RadioGroup />
           <h3>Accordion Example</h3>
-          <div className="form-check">
-            <input className="form-check-input" type="checkbox" id="terms" />
-            <label className="form-check-label" htmlFor="terms">
-              Accept terms and conditions
-            </label>
-          </div>
           <br />
           <Accordion />
           <h3>Alert Example</h3>
           <Alert />
-          <div
-            tabIndex="0"
-            role="button"
-            id="action"
-            onClick={actionButtonEventHandler}
-            onKeyDown={actionButtonEventHandler}
-          >
-            Submit
-          </div>
+          <Button />
         </div>
       </div>
       <br />
