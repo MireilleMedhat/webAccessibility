@@ -6,11 +6,22 @@ import Button from "./button/button";
 import CheckBox from "./checkBox/CheckBox";
 import "./testFormStyle.css";
 import "./button/buttonStyle.css";
+import DropDown from "./DropDown"
 /*
  *   This content is licensed according to the W3C Software License at
  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  */
 const TestForm = () => {
+   const  dropDownListOptions = [
+    "Neptunium",
+    "Plutonium",
+    "Curium",
+    "Americium",
+    "Berkelium",
+    "Californium",
+    "Einsteinium",
+    "Fermium"
+  ];
   const data = [
     { Ename: "Lettuce", tabIndex: "0", id: "0" },
     { Ename: "Tomato", tabIndex: "0", id: "1" },
@@ -62,14 +73,7 @@ const TestForm = () => {
             />
           </div>
           <div className="form-group">
-            <select className="form-control">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-              <option>Option 4</option>
-              <option>Option 5</option>
-              <option>Option 6</option>
-            </select>
+          <DropDown className="form-control" options={dropDownListOptions} />
           </div>
           <RadioGroup />
 
