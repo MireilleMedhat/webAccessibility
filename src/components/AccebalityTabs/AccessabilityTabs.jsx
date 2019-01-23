@@ -72,7 +72,7 @@ class AccessabiltyTabs extends Component {
           this.tabs[newIndex].focus();
         } else if (pressed === keys.left || pressed === keys.up) {
           this.tabs[this.tabs.length - 1].focus();
-        } else if (pressed === keys.right || pressed == keys.down) {
+        } else if (pressed === keys.right || pressed === keys.down) {
           this.tabs[0].focus();
         }
       }
