@@ -1,4 +1,5 @@
 import React from "react";
+import AccessabiltyTabs from './AccebalityTabs/AccessabilityTabs'
 import Accordion from "./Accordion/Accordion";
 import Alert from "./Alert/Alert";
 import RadioGroup from "./radioGroup/radiogroup";
@@ -85,6 +86,8 @@ const TestForm = () => {
           <h3>Alert Example</h3>
           <Alert />
           <Button />
+          <h3>Tabs Example</h3>
+          <AccessabiltyTabs/>
         </div>
       </div>
       <br />
