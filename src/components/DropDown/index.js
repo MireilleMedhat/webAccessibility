@@ -7,12 +7,20 @@ export default class DropDown extends React.Component {
   };
 
   listRef = React.createRef();
-
+  pageButtonsIsClicked= false;
   componentDidUpdate() {
     if (this.state.dispalyList) {
       this.listRef.current.focus();
       this.updateScrollBar();
+      
     }
+    if(this.pageButtonsIsClicked){
+      const element = this.listRef.current.children[
+        this.state.selectedOptionIndex
+      ];
+      this.listRef.current.scrollTop =element.offsetTop;
+    }
+    this.pageButtonsIsClicked=false;
   }
 
   buttonClickedHandler = () => {
@@ -48,9 +56,13 @@ export default class DropDown extends React.Component {
   selectedItemChangedHandler = event => {
     event.preventDefault();
     const key = event.key;
-    const index = this.state.selectedOptionIndex;
+    let index = this.state.selectedOptionIndex;
     const lastItemIndex = this.props.options.length - 1;
     const firstItemIndex = 0;
+    
+    const element = this.listRef.current.children[0];
+    const numberOfElementsViewed = Math.floor( this.listRef.current.clientHeight/ element.offsetHeight); 
+  
     switch (key) {
       case "ArrowUp":
         if (index > 0) {
@@ -75,6 +87,18 @@ export default class DropDown extends React.Component {
 
       case "Escape":
         this.setState({ dispalyList: false });
+        break;
+      case "PageUp":
+        index = index-numberOfElementsViewed;
+        index = index <0 ?0 :index;
+        this.pageButtonsIsClicked=true;
+        this.setState({ selectedOptionIndex: index });
+        break;
+      case "PageDown":
+        this.pageButtonsIsClicked=true;
+        index = index + numberOfElementsViewed;
+        index = index >lastItemIndex ? lastItemIndex :index;
+        this.setState({ selectedOptionIndex: index });
         break;
       default:
         break;
